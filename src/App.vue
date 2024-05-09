@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="flex h-screen">
+    <!-- Formulario de inicio de sesión -->
+    <div class="w-full h-screen flex justify-center items-center bg-gray-800">
+      <LoginForm />
+    </div>
+
+    <!-- Imagen -->
+   
+  </div>
 </template>
 
+
+
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LoginForm from './views/LoginForm'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LoginForm
   }
 }
 </script>
@@ -21,6 +30,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 100px;
+}
+
+/* Estilos adicionales para hacer que la imagen ocupe la mitad de la pantalla */
+.bg-cover {
+  width: 100%;
+  height: 100%;
 }
 </style>
