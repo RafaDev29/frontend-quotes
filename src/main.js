@@ -1,23 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './index.css'
- import vuetify from './plugins/vuetify'
+import router from './router'
+import store from './store'
+import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
-//Importamos las rutas
-import router from './router';
 
-// Importamos el store
- import store from './store';
 
 loadFonts()
 
-// Llamar a la acción para inicializar el estado desde localStorage
-store.dispatch('initializeStateFromLocalStorage');
-
 createApp(App)
-  .use(vuetify) 
   .use(router)
- .use(store)
+  .use(store)
+  .use(vuetify)
   .mount('#app')
-  
-

@@ -1,55 +1,25 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import store from '@/store';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  }
+]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes: [
-        {
-            meta: {
-                title: "Home",
-                requiresAuth: true
-            },
-            path: "/",
-            component: () => import("@/layouts/MasterLayout.vue"),
-            children: [
-              
-            ]
-        },
-        {
-            meta: {
-                title: "Login"
-            },
-            path: "/login",
-            name: "login",
-            component: () => import("@/views/LoginView.vue")
-        }
-    ]
+  history: createWebHistory(process.env.BASE_URL),
+  routes
 })
-// Navigation Guard
-router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-    if (requiresAuth && !store.state.isAuthenticated) {
-        // Si la ruta requiere autenticación y el usuario no está autenticado, redirigir a la página de inicio de sesión
-        next({ name: 'login' });
-    } else if (to.name === 'login' && store.state.isAuthenticated) {
-        if (store.state.rol == "Administrador" || store.state.rol == "Supervisor") {
-            next({ name: 'home' });
-        } else if (store.state.rol == "Operador") {
-            next({ name: 'pendienteslistados' });
-        }else {
-            next();
-        }
-    } else if (to.path === '/' && store.state.isAuthenticated) {
-        if (store.state.rol == "Administrador" || store.state.rol == "Supervisor") {
-            next({ name: 'home' });
-        } else if (store.state.rol == "Operador") {
-            next({ name: 'pendienteslistados' });
-        }
-    } else {
-        next();
-    }
 
-});
-export default router;
-
-
+export default router
