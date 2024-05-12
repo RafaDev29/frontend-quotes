@@ -1,41 +1,42 @@
 <template>
-  <div class="flex h-screen">
-    <!-- Formulario de inicio de sesión -->
-    <div class="w-full h-screen flex justify-center items-center bg-gray-800">
-      <LoginForm />
-    </div>
-
-    <!-- Imagen -->
-   
+  <div id="app">
+    <router-view />
   </div>
 </template>
-
-
-
 <script>
-import LoginForm from './views/LoginForm'
-
 export default {
-  name: 'App',
-  components: {
-    LoginForm
-  }
+  name: "App"
 }
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 100px;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+* {
+  box-sizing: border-box;
 }
 
-/* Estilos adicionales para hacer que la imagen ocupe la mitad de la pantalla */
-.bg-cover {
-  width: 100%;
-  height: 100%;
+body {
+  font-family: 'Poppins', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+
+#app {
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.title_poppins{
+  font-family: 'Poppins', sans-serif;
+  color: #6d6d6d;
+}
+
 </style>
