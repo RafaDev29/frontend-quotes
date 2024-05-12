@@ -26,15 +26,7 @@
                             autocomplete="false"
                            class="mt-16"
                           />
-                          <v-text-field
-                            label="Contraseña"
-                            outlined
-                            dense
-                            color="blue"
-                          autocomplete="false"
-                           type="password"
-                          
-                          />
+                          <v-text-field label="Contraseña" outlined dense color="blue" autocomplete="false" v-model="password" :type="showPassword ? 'text' : 'password'" append-icon="mdi-eye" @click:append="showPassword = !showPassword" />
                             <v-row>
                               <v-col cols="12" sm="7">
                                 <v-checkbox
@@ -55,18 +47,18 @@
                       </v-card-text>
                     </v-col>
                     <v-col cols="12" md="6" class="blue rounded-bl-xl" >
-                    <div style="  text-align: center; padding: 180px 0;">
+                    <div style="  text-align: center; padding: 90px 0;">
                       <v-card-text class="white--text" >
-                        <h3 class="text-center ">Don't Have an Account Yet?</h3>
+                        <h3 class="text-center ">¿No tienes cuenta? </h3>
                         <h6
                           class="text-center"
-                        >Let's get you all set up so you can start creating your your first<br>  onboarding experience</h6>
-                        <img src="..\src\assets\logo.png" alt="Texto alternativo de la imagen">
+                        ><br>  registrate presionando el botoN de abajo.</h6>
+                        <img src="https://img.freepik.com/vector-premium/hombre-electricista-sosteniendo-ilustracion-vectorial-iluminacion_10548-519.jpg?w=740" alt="Texto alternativo de la imagen" style="width: 50%; height: auto;">
                         
                         
                       </v-card-text>
                       <div class="text-center">
-                        <v-btn tile outlined dark @click="step++">SIGN UP</v-btn>
+                        <v-btn tile outlined dark @click="step++">REGISTRASE</v-btn>
                       </div>
                       </div>
                     </v-col>
@@ -75,15 +67,17 @@
                 <v-window-item :value="2">
                   <v-row >
                     <v-col cols="12" md="6" class="blue rounded-br-xl">
-                     <div style="  text-align: center; padding: 180px 0;">
+                     <div style="  text-align: center; padding: 90px 0;">
                       <v-card-text class="white--text" >
-                        <h3 class="text-center ">Alredy Signed up?</h3>
+                        <h3 class="text-center ">¿Ya se encuentra registrado?</h3>
                         <h6
                           class="text-center"
-                        >Log in to your account so you can continue building and<br>  editing your onboarding flows</h6>
+                        ><br> Precionar el boton de abajo para Iniciar sesion </h6>
                       </v-card-text>
+                      <img src="https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-electricistas-dibujados-mano_52683-152426.jpg?t=st=1715500697~exp=1715501297~hmac=9be6cf04f028b87e6207e5c6fb5c23328b90e7ef1793124a3a46e96eaed136e3" alt="Texto alternativo de la imagen" style="width: 50%; height: auto; border-radius: 5px;">
                       <div class="text-center">
-                        <v-btn tile outlined dark @click="step--">Log in</v-btn>
+                       
+                        <v-btn tile outlined dark @click="step--">INICIAR SESION </v-btn>
                       </div>
                       </div>
                     </v-col>
@@ -150,7 +144,7 @@
                      
                          <h5
                           class="text-center  grey--text mt-4 mb-3"
-                        >Or Sign up using</h5>
+                        >Encuentranos en nuestras redes sociales</h5>
                          <div class="d-flex  justify-space-between align-center mx-10 mb-11">
                           <v-btn depressed outlined color="withe">
                             <i class="fab fa-google" style="color: red;"></i>
@@ -181,7 +175,8 @@
 
   export default {
    data: () => ({
-    step: 1
+    step: 1,
+    showPassword: false 
   }),
   props: {
     source: String
