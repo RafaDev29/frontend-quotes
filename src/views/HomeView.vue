@@ -53,7 +53,7 @@
                         <h6
                           class="text-center"
                         ><br>  registrate presionando el botoN de abajo.</h6>
-                        <img src="https://img.freepik.com/vector-premium/hombre-electricista-sosteniendo-ilustracion-vectorial-iluminacion_10548-519.jpg?w=740" alt="Texto alternativo de la imagen" style="width: 50%; height: auto;">
+                        <img :src="login" alt="Texto alternativo de la imagen" style="width: 50%; height: auto;">
                         
                         
                       </v-card-text>
@@ -170,20 +170,20 @@
   </v-container>
 </template>
 
-<script>
+<script setup>
+import { ref, defineProps } from 'vue';
+import login from "@/assets/login/10165017.png";
+
+
+  const step =ref(1);
+  const showPassword = ref(false);
   
-
-  export default {
-   data: () => ({
-    step: 1,
-    showPassword: false 
-  }),
-  props: {
+  const props = defineProps({
     source: String
-  } 
+  })
 
-    
-  }
+  console.log(props.source)
+
 </script>
 <style scoped>
 .v-application .rounded-bl-xl {
