@@ -21,19 +21,20 @@
   
   <script>
   import { inject } from 'vue'
+  import { useRouter } from 'vue-router'
   
   export default {
     setup() {
       const drawer = inject('drawer');
+      const router = useRouter();
       const items = [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', route: '/dashboard' },
         { title: 'Profile', icon: 'mdi-account', route: '/profile' },
-        // Agrega más ítems según sea necesario
       ];
   
       const navigateTo = (route) => {
-        drawer.value = false;  // Cierra el menú después de navegar
-        this.$router.push(route);
+        drawer.value = false;
+        router.push(route);
       };
   
       return { drawer, items, navigateTo };

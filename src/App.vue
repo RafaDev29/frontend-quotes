@@ -1,3 +1,4 @@
+
 <template>
   <v-app>
     <AppBar v-if="showMenu" />
